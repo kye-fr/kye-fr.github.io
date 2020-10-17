@@ -90,7 +90,7 @@ header li {
 }
 
 header a.active {
-	color: #007bff;
+	color: #000;
 	font-weight: bold;
 }
 
@@ -203,5 +203,7 @@ figcaption {
 }
 
 .bx-h01 {
-  font-size: 120%;
-  font-weight: bold; }
+  font-size: 150%;
+  font-weight: bold;
+  color: #007bff;
+}

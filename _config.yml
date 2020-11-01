@@ -12,7 +12,7 @@ permalink:        ':title'
 
 # Setup
 title:            kye-fr
-url:              http://kye-fr.github.io
+url:              
 baseurl:          http://kye-fr.github.io/
 
 author:

@@ -8,7 +8,7 @@ kramdown:
   hard_wrap: false
 
 # Permalinks
-permalink:        ':title'
+permalink:        pretty
 
 # Setup
 title:            kye-fr

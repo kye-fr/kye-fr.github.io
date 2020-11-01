@@ -12,8 +12,8 @@ permalink:        ':title'
 
 # Setup
 title:            kye-fr
-url:              
-baseurl:          http://kye-fr.github.io/
+url:              http://kye-fr.github.io
+baseurl:          http://kye-fr.github.io
 
 author:
   name:           'Kyle Hickey'

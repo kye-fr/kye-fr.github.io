@@ -1,118 +1,138 @@
-# Hyde
+# minimaless
 
-Hyde is a brazen two-column [Jekyll](http://jekyllrb.com) theme that pairs a prominent sidebar with uncomplicated content. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+[![Gem Version](https://img.shields.io/gem/v/minimaless.svg)](https://rubygems.org/gems/jekyll-admin)
 
-![Hyde screenshot](https://f.cloud.github.com/assets/98681/1831228/42af6c6a-7384-11e3-98fb-e0b923ee0468.png)
+It's like the [minima](https://jekyll.github.io/minima/) theme, but with _less noise_ and more functionality. ✨
+
+See the [demo site](https://brettinternet.github.io/minimaless/) or follow these steps to [setup](/_pages/setup.md) your own Jekyll site with this theme.
+
+![minimaless screenshot preview](/screenshot.png)
+
+## Installation
+
+Add this line to your Jekyll site's Gemfile:
+
+```ruby
+gem "minimaless"
+```
+
+If you're interested, the gem is found [here](https://rubygems.org/gems/minimaless).
+
+And add this line to your Jekyll site:
+
+```yaml
+theme: minimaless
+```
+
+And then execute:
+
+    $ bundle
 
 
-## Contents
+## Features
 
-- [Usage](#usage)
-- [Options](#options)
-  - [Sidebar menu](#sidebar-menu)
-  - [Sticky sidebar content](#sticky-sidebar-content)
-  - [Themes](#themes)
-  - [Reverse layout](#reverse-layout)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
+### Includes
 
+Refers to snippets of code within the `_includes` directory that can be inserted in multiple layouts (and another include-file as well) within the same theme-gem.
+
+  - `disqus_comments.html` &mdash; Code to markup disqus comment box.
+  - `footer.html` &mdash; Defines the site's footer section.
+  - `google-analytics.html` &mdash; Inserts Google Analytics module (active only in production environment).
+  - `head.html` &mdash; Code-block that defines the `<head></head>` in *default* layout.
+  - `header.html` &mdash; Defines the site's main header section. By default, pages with a defined `title` attribute will have links displayed here.
+  - `contact-icons.html` &mdash; Inserts social icons when you specify a social media site `*_username` in the config.
+    - You can also add an `.asc` file for a key icon to appear for users to download your GPG key file.
 
 ## Usage
 
-Hyde is a theme built on top of [Poole](https://github.com/poole/poole), which provides a fully furnished Jekyll setup—just download and start the Jekyll server. See [the Poole usage guidelines](https://github.com/poole/poole#usage) for how to install and use Jekyll.
+### Customization
 
+To override the default structure and style of minimaless, simply create the concerned directory at the root of your site, copy the file you wish to customize to that directory, and then edit the file.
+e.g., to override the [`_includes/head.html `](_includes/head.html) file to specify a custom style path, create an `_includes` directory, copy `_includes/head.html` from minimaless gem folder to `<yoursite>/_includes` and start editing that file.
 
-## Options
+The site's default CSS has now moved to a new place within the gem itself, [`assets/main.scss`](assets/main.scss). To **override the default CSS**, the file has to exist at your site source. Do either of the following:
+- Create a new instance of `main.scss` at site source.
+  - Create a new file `main.scss` at `<your-site>/assets/`
+  - Add the frontmatter dashes, and
+  - Add `@import "minimaless";`, to `<your-site>/assets/main.scss`
+  - Add your custom CSS.
+- Download the file from this repo
+  - Create  a new file `main.scss` at `<your-site>/assets/`
+  - Copy the contents at [assets/main.scss](assets/main.scss) onto the `main.scss` you just created, and edit away!
+- Copy directly from Minimaless gem
+  - Go to your local minimaless gem installation directory ( run `bundle show minimaless` to get the path to it ).
+  - Copy the `assets/` folder from there into the root of `<your-site>`
+  - Change whatever values you want, inside `<your-site>/assets/main.scss`
+- Edit index.md to change what appears on the site's splash/landing page.
 
-Hyde includes some customizable options, typically applied via classes on the `<body>` element.
+--
 
+### Tags
 
-### Sidebar menu
-
-Create a list of nav links in the sidebar by assigning each Jekyll page the correct layout in the page's [front-matter](http://jekyllrb.com/docs/frontmatter/).
+Make a new folder called `tag` where you will add markdown files for each new tag you use on your site.
 
 ```
+minimaless
+├─ tag
+│  └─ kittens.md
+└─ _posts
+```
+
+Create a new markdown file with the tag as the file name (eg. `<tag name>.md`). You only need to set up the header information. For example, if the tag is `kittens`, then use the following header:
+
+```yml
 ---
-layout: page
-title: About
+layout: tags
+tag: kittens
+permalink: /tag/kittens/
 ---
 ```
 
-**Why require a specific layout?** Jekyll will return *all* pages, including the `atom.xml`, and with an alphabetical sort order. To ensure the first link is *Home*, we exclude the `index.html` page from this list by specifying the `page` layout.
+This must be done for every new tag you create. This is the page that users will see when they click on a tag to display the list of posts for each tag. [View the tag page here](https://brettinternet.github.io/minimaless/tags/).
 
+--
 
-### Sticky sidebar content
+### Enabling comments (via Disqus)
 
-By default Hyde ships with a sidebar that affixes it's content to the bottom of the sidebar. You can optionally disable this by removing the `.sidebar-sticky` class from the sidebar's `.container`. Sidebar content will then normally flow from top to bottom.
+Optionally, if you have a Disqus account, you can tell Jekyll to use it to show a comments section below each post.
 
-```html
-<!-- Default sidebar -->
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    ...
-  </div>
-</div>
+To enable it, add the following lines to your Jekyll site:
 
-<!-- Modified sidebar -->
-<div class="sidebar">
-  <div class="container">
-    ...
-  </div>
-</div>
+```yaml
+  disqus:
+    shortname: my_disqus_shortname
 ```
 
+You can find out more about Disqus' shortnames [here](https://help.disqus.com/customer/portal/articles/466208).
 
-### Themes
+Comments are enabled by default and will only appear in production, i.e., `JEKYLL_ENV=production`
 
-Hyde ships with eight optional themes based on the [base16 color scheme](https://github.com/chriskempson/base16). Apply a theme to change the color scheme (mostly applies to sidebar and links).
+If you don't want to display comments for a particular post you can disable them by adding `comments: false` to that post's YAML Front Matter.
 
-![Hyde in red](https://f.cloud.github.com/assets/98681/1831229/42b0b354-7384-11e3-8462-31b8df193fe5.png)
+--
 
-There are eight themes available at this time.
+### Enabling Google Analytics
 
-![Hyde theme classes](https://f.cloud.github.com/assets/98681/1817044/e5b0ec06-6f68-11e3-83d7-acd1942797a1.png)
+To enable Google Anaytics, add the following lines to your Jekyll site:
 
-To use a theme, add anyone of the available theme classes to the `<body>` element in the `default.html` layout, like so:
-
-```html
-<body class="theme-base-08">
-  ...
-</body>
+```yaml
+  google_analytics: UA-NNNNNNNN-N
 ```
 
-To create your own theme, look to the Themes section of [included CSS file](https://github.com/poole/hyde/blob/master/public/css/hyde.css). Copy any existing theme (they're only a few lines of CSS), rename it, and change the provided colors.
+Google Analytics will only appear in production, i.e., `JEKYLL_ENV=production`
 
-### Reverse layout
 
-![Hyde with reverse layout](https://f.cloud.github.com/assets/98681/1831230/42b0d3ac-7384-11e3-8d54-2065afd03f9e.png)
 
-Hyde's page orientation can be reversed with a single class.
+## Contributing
 
-```html
-<body class="layout-reverse">
-  ...
-</body>
-```
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/brettinternet/minimaless.
 
 ## Development
 
-Hyde has two branches, but only one is used for active development.
+To set up your environment to develop this theme, run `script/bootstrap`.
 
-- `master` for development.  **All pull requests should be submitted against `master`.**
-- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
-
-
-## Author
-
-**Mark Otto**
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
-
+To test your theme, run `script/server` (or `bundle exec jekyll serve`) and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme and the contents. As you make modifications, your site will regenerate and you should see the changes in the browser after a refresh.
 
 ## License
 
-Open sourced under the [MIT license](LICENSE.md).
-
-<3
+The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

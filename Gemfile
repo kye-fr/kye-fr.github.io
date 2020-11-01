@@ -1,6 +1,8 @@
 source "https://rubygems.org"
-
-gem "jekyll"
-gem "jekyll-gist"
-gem "jekyll-paginate"
-gem "jekyll-seo-tag"
+gemspec
+gem 'jekyll-feed'
+gem 'jekyll-sitemap'
+gem 'jekyll-gist'
+gem 'jekyll-redirect-from'
+gem 'jekyll-archives'
+gem 'jekyll-paginate'

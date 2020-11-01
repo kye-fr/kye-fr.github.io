@@ -10,6 +10,8 @@ relative_permalinks: false
 title:            Kyle Hickey
 tagline:          ''
 description:      ''
+url:              https://kye-fr.github.io/
+baseurl:          /
 
 author:
   name:           'Mark Otto'

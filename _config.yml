@@ -1,26 +1,30 @@
+
 # Dependencies
-markdown:         redcarpet
-highlighter:      pygments
+markdown:         kramdown
+highlighter:      rouge
+#gems:             [jekyll-paginate]
+
+kramdown:
+  input: GFM
+  hard_wrap: false
 
 # Permalinks
-permalink:        pretty
-#relative_permalinks: true
+permalink:        ':title'
 
 # Setup
-title:            Hyde
-tagline:          'A Jekyll theme'
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:              https://kye-fr.github.io/kye-fr
-baseurl:          /
+title:            kye-fr.github.io
+url:              kye-fr.github.io
+baseurl:          kye-fr.github.io/kye-fr/
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+  name:           'Kyle Hickey'
 
 paginate:         5
 
-# Custom vars
-version:          2.1.0
-
-github:
-  repo:           https://github.com/poole/hyde
+twitter: https://twitter.com/jaredtobin
+medium:  https://medium.com/@jaredtobin
+github:  https://github.com/jtobin
+keybase: https://keybase.io/jtobin
+pgp: https://pgp.mit.edu/pks/lookup?op=vindex&search=0x710A5FDAE32D77E7
+instagram: https://instagram.com/jaredrtobin
+se: https://stackexchange.com/users/1074581/jtobin?tab=accounts

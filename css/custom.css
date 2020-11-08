@@ -48,6 +48,12 @@
   font-size: 1.2rem;
   color: #999;
   letter-spacing: normal; }
+.footnote {
+  font-size: 1.2rem;
+  letter-spacing: normal;}
+.playfair{
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;}
 .code-example {
   margin-top: 1.5rem;
   margin-bottom: 0; }
@@ -108,7 +114,7 @@
     left: 0;
     max-height: none; }
 }
-
+/* ---------- Responsive Navbar ---------- */
 /* Larger than tablet */
 @media (min-width: 750px) {
   /* Navbar */

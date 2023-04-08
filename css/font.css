@@ -1,0 +1,17 @@
+.serif_logo_font
+  {
+    font-family: 'Playfair Display', serif;
+  }
+
+.light_font
+  {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 200;
+    color: #001524;
+  }
+
+.logo_font
+  {
+    font-family: 'Montserrat', sans-serif;
+    color: #26272b;
+  }
